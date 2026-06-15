@@ -32,36 +32,36 @@ export function CTASection({
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-balance break-words">
             {title}
           </h2>
           <p
-            className={`text-lg mb-8 ${
+            className={`text-base sm:text-lg mb-8 text-pretty ${
               variant === "gradient" ? "text-white/80" : "text-muted-foreground"
             }`}
           >
             {subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
+          <div className="flex w-full flex-col items-stretch sm:items-center justify-center gap-4 sm:flex-row">
+            <Link href="/contact" className="w-full sm:w-auto">
               <Button
                 size="xl"
                 variant={variant === "gradient" ? "default" : "luxury"}
-                className="gap-2"
+                className="w-full sm:w-auto gap-2"
               >
-                <Calendar className="h-5 w-5" />
+                <Calendar className="h-5 w-5 shrink-0" />
                 Book Appointment
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 shrink-0" />
               </Button>
             </Link>
-            <a href={BUSINESS.phoneHref}>
+            <a href={BUSINESS.phoneHref} className="w-full sm:w-auto">
               <Button
                 size="xl"
                 variant={variant === "gradient" ? "glass" : "outline"}
-                className="gap-2"
+                className="w-full sm:w-auto gap-2"
               >
-                <Phone className="h-5 w-5" />
+                <Phone className="h-5 w-5 shrink-0" />
                 {BUSINESS.phone}
               </Button>
             </a>

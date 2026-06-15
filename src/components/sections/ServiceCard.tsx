@@ -79,7 +79,7 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           </ul>
         </CardContent>
 
-        <CardFooter className="flex items-center justify-between">
+        <CardFooter className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <span className="text-2xl font-bold text-primary">
               ${service.price}

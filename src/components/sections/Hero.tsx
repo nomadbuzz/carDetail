@@ -26,8 +26,8 @@ export function Hero({
 }: HeroProps) {
   return (
     <section
-      className={`relative flex items-center justify-center overflow-hidden ${
-        compact ? "min-h-[50vh]" : "min-h-screen"
+      className={`relative flex w-full items-center justify-center overflow-hidden ${
+        compact ? "min-h-[50vh]" : "min-h-[100dvh] sm:min-h-screen"
       }`}
     >
       <Image
@@ -36,30 +36,30 @@ export function Hero({
         fill
         priority
         className="object-cover"
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
-      <div className="relative z-10 container-custom text-center text-white pt-24">
+      <div className="relative z-10 w-full container-custom text-center text-white pt-20 pb-16 sm:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto w-full"
         >
-          <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-2 mb-6 text-sm">
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-            <span>
+          <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full glass-card px-3 py-2 mb-6 text-xs sm:text-sm">
+            <Star className="h-4 w-4 shrink-0 fill-yellow-400 text-yellow-400" />
+            <span className="text-center">
               {BUSINESS.rating} Rating &bull; {BUSINESS.reviewCount}+ Happy
               Customers
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15] mb-6 text-balance break-words px-1">
             {title}
           </h1>
 
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed text-pretty px-1">
             {subtitle}
           </p>
 
@@ -68,15 +68,15 @@ export function Hero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex w-full flex-col items-stretch sm:items-center justify-center gap-4 sm:flex-row"
             >
-              <Link href="/contact">
+              <Link href="/contact" className="w-full sm:w-auto">
                 <Button size="xl" className="w-full sm:w-auto gap-2">
                   <Calendar className="h-5 w-5" />
                   Book Appointment
                 </Button>
               </Link>
-              <a href={BUSINESS.phoneHref}>
+              <a href={BUSINESS.phoneHref} className="w-full sm:w-auto">
                 <Button
                   variant="glass"
                   size="xl"

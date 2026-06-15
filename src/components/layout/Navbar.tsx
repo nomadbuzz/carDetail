@@ -39,14 +39,14 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
         scrolled
           ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg"
-          : "bg-transparent"
+          : "max-lg:bg-background/90 max-lg:backdrop-blur-xl max-lg:border-b max-lg:border-border/50"
       )}
     >
       <nav className="container-custom">
-        <div className="flex h-18 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-2">
           <Link href="/" className="flex items-center gap-2 group" onClick={closeMenu}>
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
               <Sparkles className="h-5 w-5" />
@@ -79,7 +79,7 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             {mounted && (
               <Button
                 variant="ghost"

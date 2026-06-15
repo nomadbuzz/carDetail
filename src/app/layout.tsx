@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://eliteshineauto.com"),
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,14 +31,14 @@ export default function RootLayout({
   const schema = getLocalBusinessSchema();
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full overflow-x-hidden`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased overflow-x-hidden w-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -40,7 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full overflow-x-hidden">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -30,7 +30,7 @@ export function WhyChooseUs() {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Why Choose Us
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2 mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2 mb-4 text-balance">
             The Elite Shine Difference
           </h2>
           <p className="text-lg text-muted-foreground">

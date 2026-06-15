@@ -32,7 +32,7 @@ export function Footer() {
               {BUSINESS.state}. Transforming vehicles with expert care since{" "}
               {new Date().getFullYear() - BUSINESS.yearsExperience}.
             </p>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}

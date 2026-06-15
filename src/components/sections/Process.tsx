@@ -32,7 +32,7 @@ export function Process() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 overflow-hidden">
           {PROCESS_STEPS.map((step, index) => {
             const Icon = iconMap[step.icon] || Calendar;
             return (
