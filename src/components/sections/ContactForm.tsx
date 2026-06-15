@@ -13,6 +13,8 @@ import { contactFormSchema, type ContactFormData } from "@/lib/schemas";
 import { SERVICES } from "@/lib/constants";
 import type { FormStatus } from "@/types";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeewvwbe";
+
 interface ContactFormProps {
   showBookingFields?: boolean;
 }
@@ -32,8 +34,28 @@ export function ContactForm({ showBookingFields = false }: ContactFormProps) {
   const onSubmit = async (data: ContactFormData) => {
     setStatus("loading");
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Form submitted:", data);
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          _subject: showBookingFields
+            ? "New Appointment Booking — Elite Shine"
+            : "New Contact Message — Elite Shine",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
       setStatus("success");
       reset();
       setTimeout(() => setStatus("idle"), 5000);
@@ -45,6 +67,8 @@ export function ContactForm({ showBookingFields = false }: ContactFormProps) {
 
   return (
     <motion.form
+      action={FORMSPREE_ENDPOINT}
+      method="POST"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit(onSubmit)}
@@ -104,7 +128,7 @@ export function ContactForm({ showBookingFields = false }: ContactFormProps) {
           >
             <option value="">Select a service</option>
             {SERVICES.map((s) => (
-              <option key={s.id} value={s.id}>
+              <option key={s.id} value={s.name}>
                 {s.name} — {s.priceLabel}
               </option>
             ))}
